@@ -1,0 +1,67 @@
+<!--index.wxml-->
+<view class="pyg_index">
+    <!-- 搜索开始 -->
+    <Search></Search>
+    <!-- 搜索结束 -->
+
+    <!-- 轮播图开始 -->
+    <view class="index_swiper">
+        <swiper
+        indicator-dots
+        circular
+        autoplay="true"
+        indicator-color="#999"
+        indicator-active-color="var(--themeColor)"
+        interval="3000"
+        duration="1000"
+        >
+            <swiper-item 
+            wx:for="{{swiperList}}" 
+            wx:key="goods_id">
+                <navigator open-type="{{item.open_type}}" url="{{item.navigator_url}}">
+                    <image mode="widthFix" src="{{item.image_src}}"></image>
+                </navigator>
+            </swiper-item>
+        </swiper>
+    </view>
+     <!-- 轮播图结束 -->
+     <!-- 导航开始 -->
+     <view class="index_cate">
+            <navigator 
+            wx:for="{{catesList}}"
+            wx:key="name"
+            url="{{item.navigator_url}}"
+            open-type="{{item.open_type}}">
+                <image src="{{item.image_src}}" mode="widthFix" lazy-load="true"></image>
+            </navigator>
+     </view>
+    <!-- 导航结束 -->
+    <!-- 楼层开始 -->
+    <view class="index_floor">
+         <view class="floor_group"
+            wx:for="{{floorList}}"
+            wx:for-item="item1"
+            wx:for-index="index1"
+            wx:key="floor_title.name">
+            <view class="floor_title">
+                 <image src="{{item1.floor_title.image_src}}" mode="widthFix" lazy-load="false"></image>
+             </view>
+             <view class="floor_list">
+                <navigator  
+                    wx:for="{{item1.product_list}}"
+                    wx:for-index="index2"
+                    wx:for-item="item2"
+                    wx:key="{{item2.name}}"
+                    url="{{item2.navigator_url}}" 
+                    open-type="{{item2.open_type}}">
+                    <image 
+                        src="{{item2.image_src}}"
+                        mode="{{index2===0?'widthFix':'scaleToFill'}}"
+                        azy-load="true">
+                    </image>
+                </navigator>
+             </view>
+         </view>
+     </view>
+    <!-- 楼层结束 -->
+</view>

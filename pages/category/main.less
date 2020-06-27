@@ -1,0 +1,71 @@
+page{
+    height: 100%;
+}
+.cates{
+    height: 100%;
+    .cates_container{
+        height: calc(100vh - 90rpx);
+        display: flex;
+        .left_menu{
+            // 变成 伸缩盒子(父标签display: flex;) 的子项,高度默认继承父类,变为百分百
+            flex: 2;
+            .menu_item{
+                height: 80rpx;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 30rpx;
+            }
+            .active{
+                color: var(--themeColor);
+                border-left: 4rpx solid var(--themeColor);
+            }
+        }
+        .right_content{
+            flex: 5;
+        }
+    }
+}
+.right_content{
+    overflow: hidden;
+    .goods_group{
+        display: flex;
+        flex-wrap: wrap;
+        .goods_title{
+            .delimiter{
+                color: #999;
+                padding: 0rpx 20rpx;
+            }
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80rpx;
+            width: 100%;
+        }
+        .goods_list{
+            // width: 100%;
+            // font-size: 0rpx;
+            // 让子类可换行显示
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+            navigator{
+                width: 33.33%;
+                // display: inline-block;
+                text-align: center;
+                image{
+                    width: 50%;
+                }
+                view{
+                    font-size: 28rpx;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    overflow: hidden;
+                    width: 100%;
+                }
+            }
+
+        }
+    }   
+}

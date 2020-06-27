@@ -1,0 +1,4 @@
+<!--pages/search/search.wxml-->
+<view class="search">
+   <input type="text" placeholder="请输入商品名字"></input>
+</view>
