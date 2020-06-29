@@ -37,6 +37,7 @@
                         wx:for-index="index2"
                         wx:for-item="item2"
                         wx:key="cat_id"
+                        url="/pages/goods_list/goods_list?cid={{item2.cat_id}}"
                     >
                         <image src="{{item2.cat_icon}}" mode="widthFix" lazy-load="true"></image>
                         <view class="goods_name">

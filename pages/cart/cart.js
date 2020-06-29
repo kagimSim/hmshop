@@ -1,66 +1,32 @@
 // pages/cart/cart.js
+import {getSetting,chooseAddress,openSetting} from "../../request/asyncWx.js";
+
 Page({
-
-    /**
-     * 页面的初始数据
-     */
-    data: {
+    data:{
+        address:{}
+    },
+    onShow : function(){
+        //第一步 加载本地缓存地址，如果有 则直接显示
+        const address = wx.getStorageSync("address");
+        if(address){
+            this.setData({
+                address
+            })
+        }
 
     },
-
-    /**
-     * 生命周期函数--监听页面加载
-     */
-    onLoad: function (options) {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function () {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function () {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function () {
-
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage: function () {
-
+   async handleChooseAddress(e){
+       try {
+            const res = await getSetting();
+            const scopeAddress = res.authSetting["scope.address"];
+            if(scopeAddress === false){
+                await openSetting();
+            }
+            const address = await chooseAddress();
+            wx.setStorageSync("address", address);
+       } catch (error) {
+           console.log(error)
+       }
     }
+
 })

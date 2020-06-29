@@ -27,34 +27,25 @@ Page({
     getSwiperList(){
         request({url:"/home/swiperdata"})
         .then(result=>{
-            if(result.data.meta.status === 200){
-                console.log(result)
-                this.setData({
-                    swiperList:result.data.message
-                })
-            }
+            this.setData({
+                swiperList:result
+            })
         })
     },
     getCatesList(){
         request({url:"/home/catitems"})
         .then(result=>{
-            if(result.data.meta.status === 200){
-                console.log(result)
-                this.setData({
-                    catesList:result.data.message
-                })
-            }
+            this.setData({
+                catesList:result
+            })
         })
     },
     getFloorList(){
         request({url:"/home/floordata"})
         .then(result=>{
-            if(result.data.meta.status === 200){
-                console.log(result)
-                this.setData({
-                    floorList:result.data.message
-                })
-            }
+            this.setData({
+                floorList:result
+            })
         })
     }
 })

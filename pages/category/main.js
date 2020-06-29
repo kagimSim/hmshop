@@ -60,7 +60,7 @@ Page({
         //     })
         // })
         const res = await request({url:"/categories"});
-        this.Cates = res.data.message;
+        this.Cates = res;
         const Cates = wx.setStorageSync("cates",{
             time:Date.now(), // 当前时间戳
             data:this.Cates
